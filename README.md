@@ -2,7 +2,9 @@
 
 forces an image into a specific color palette
 
-requires pillow and python
+there's probably a program that does this better and easier but i couldn't find it
+
+requires pillow and python 3
 
 probably breaks all python style guides (sorry)
 
@@ -27,6 +29,10 @@ python convert_to_palette.py demo/bird.jpeg demo/crimson-1x.png true
 
 ## license
 do whatever i dont care
+
+## future
+will probably make it so you can use more than 1 image at a time when i feel like it
+names are sorta buggy
 
 ## credits
 

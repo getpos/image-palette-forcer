@@ -23,10 +23,9 @@ for color in pal_col:
    palette_array = palette_array + (list(pal_col[i][1]))
    i += 1
 
-# fill extra spots because for some reason PIL automatically fills it weird random colors
-# that aren't in the palette when it is too small
+# fill extra spots because for some reason PIL automatically fills it with
+# weird random colors that aren't in the palette when it is too small
 
-print(len(palette_array))
 while len(palette_array) != 768:
    palette_array = palette_array + (list(pal_col[0][1])) 
 
@@ -35,8 +34,6 @@ pal_image2 = Image.new("P", (1,1))
 pal_image2.putpalette(palette_array,"RGB")
 
 def main(img_name):
-    print(img_name)
-    print('this is the img name!')
     with Image.open(str(img_name)) as img:
         # if rgba convert to rgb
         if img.mode == 'RGBA':
@@ -44,13 +41,12 @@ def main(img_name):
         
         out = img.quantize(palette=pal_image2,dither=dither_arg)
         out = out.convert('RGB')
-        if img_name.find('/'):
-            img_name = img_name[img_name.find('/') + 1:]
-            print(img_name[-img_name.find('.') - 1:])
-            img_name = img_name.replace(img_name[-img_name.find('.') - 1:], "")
-            print(img_name)
+        img_name = img_name[img_name.find('/') + 1:]
+        img_name = img_name.replace(img_name[img_name.find('.') - 1:], "")
         
         out.save("converted_" + img_name + '.png', 'PNG')
+        print('Done!')
+        print('Saved as ' + "converted_" + img_name + '.png' + '!')
 
 
 main(image)
